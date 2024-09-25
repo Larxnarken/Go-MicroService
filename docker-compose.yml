@@ -5,12 +5,12 @@ services:
       mongo
     container_name: mongodb
     environment:
-      - PUID=1000
-      - PGID=1000
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=1234
     ports:
-      - "27017:27017"
+      - "127.0.0.1:27017:27017"
     volumes:
-      - /home/barry/mongodb/database:/data/db
+      - ./DBZeug/mongo:/data/db
 
   mariadb:
     image: mariadb:10.4
@@ -19,6 +19,6 @@ services:
       MYSQL_ROOT_PASSWORD: mypass
 
     ports:
-      - "3306:3306"
+      - "127.0.0.2:3306:3306"
     volumes:
-      - /home/barry/mariadb/database:/data/db
+      - ./DBZeug/maria:/data/db
